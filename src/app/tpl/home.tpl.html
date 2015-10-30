@@ -1,0 +1,41 @@
+<div class="layout-row">
+    <div class="flex">
+
+        <md-content>
+            <h2>Customers</h2><customer-card></customer-card>
+            <md-list>
+                <md-list-item class="md-3-line" *ng-for="#customer of customers" [ng-class]="getSelectedClass(customer)"
+                              (click)="onSelect(customer)">
+
+
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{ customer.company }}</h3>
+                        <h4>{{ customer.group }}</h4>
+
+                        <p>#{{ customer.id }}</p>
+                    </div>
+
+
+                </md-list-item>
+            </md-list>
+
+        </md-content>
+    </div>
+
+    <div class="flex">
+        <md-content>
+            <div *ng-if="selectedCustomer">
+                <h2>{{selectedCustomer.company}} details!</h2>
+
+                <div><label>id: </label>{{selectedCustomer.id}}</div>
+                <div>
+                    <label>name: </label>
+
+                    <div><input [(ng-model)]="selectedCustomer.company" placeholder="name"></div>
+                </div>
+            </div>
+        </md-content>
+    </div>
+
+
+</div>
